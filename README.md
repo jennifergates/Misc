@@ -1,4 +1,3 @@
-# hello-world
-Obligatory hello world
-More text
-kkk
+# Misc
+Just a place for miscellaneous files.
+
