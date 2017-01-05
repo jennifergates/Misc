@@ -1,0 +1,2 @@
+SHA1(SecOnion14ovf.ovf)= 682477a2b6af01a4478b06dacae5f487ff8d8eb2
+SHA1(SecOnion14ovf-disk1.vmdk)= bec9aa29a2bb4ccdef739d4b408b00bdb6d99022
