@@ -75,8 +75,8 @@ event syslog_message(c:connection; facility:count; severity:count; msg: string)
 				dst_p = "No Port";
 			};
 		};
-		print "GOT FW ACTION";
-		print msg;
+		
+		#Log format
 		local rec: RouterFW::Info = [$syslog_ts=c$syslog$ts, $syslog_uid=c$uid, $fw_ts=fw_time, $packet_src=src_ip, $packet_dest=dst_ip, $packet_dport=dst_p, $packet_proto=proto, $action=action];
 		
 		c$routerfw = rec;
