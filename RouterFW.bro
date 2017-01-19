@@ -19,7 +19,8 @@ export {
 		fw_ts: string 		&log;
 		packet_src: addr	&log;
 		packet_dest: addr	&log;
-		packet_dport: count &log;
+		packet_dport: string &log;
+		packet_proto: string &log;
 		action: string  	&log;
 	};
 }
@@ -47,15 +48,40 @@ event syslog_message(c:connection; facility:count; severity:count; msg: string)
 	if (( "ACCEPT" in msg ) || ("DROP" in msg))
 	{
 		local action = messagedata[4];
-		local src_ip = to_addr((split_string(messagedata[8], /=/ ))[1]);
-		local dst_ip = to_addr((split_string(messagedata[9], /=/))[1]);
-		local dst_p = to_count((split_string(messagedata[17], /=/))[1]);
-		#print "GOT FW ACTION";
-		#print c;
-		local rec: RouterFW::Info = [$syslog_ts=c$syslog$ts, $syslog_uid=c$uid, $fw_ts=fw_time, $packet_src=src_ip, $packet_dest=dst_ip, $packet_dport=dst_p, $action=action];
+		for (i in messagedata)
+		{
+			if ("SRC=" in messagedata[i])
+			{
+				local src_ip = to_addr((split_string(messagedata[i], /=/ ))[1]);
+			};
+
+			if ("DST=" in messagedata[i])
+			{
+				local dst_ip = to_addr((split_string(messagedata[i], /=/))[1]);
+			};
+
+			if ("DPT=" in messagedata[i])
+			{
+				local dst_p = (split_string(messagedata[i], /=/))[1];
+				} 
+				#else 
+				#{
+				#	dst_p = "No Port";
+				#};
+
+			if ("PROTO=" in messagedata[i])
+			{
+				local proto = (split_string(messagedata[i], /=/))[1];
+				dst_p = "No Port";
+			};
+		};
+		print "GOT FW ACTION";
+		print msg;
+		local rec: RouterFW::Info = [$syslog_ts=c$syslog$ts, $syslog_uid=c$uid, $fw_ts=fw_time, $packet_src=src_ip, $packet_dest=dst_ip, $packet_dport=dst_p, $packet_proto=proto, $action=action];
+		
 		c$routerfw = rec;
 
 		Log::write(RouterFW::LOG, rec);
-	}
+	};
 	
 }
