@@ -63,11 +63,8 @@ event syslog_message(c:connection; facility:count; severity:count; msg: string)
 			if ("DPT=" in messagedata[i])
 			{
 				local dst_p = (split_string(messagedata[i], /=/))[1];
-				} 
-				#else 
-				#{
-				#	dst_p = "No Port";
-				#};
+			}; 
+
 
 			if ("PROTO=" in messagedata[i])
 			{
