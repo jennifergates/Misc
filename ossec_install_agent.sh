@@ -50,7 +50,7 @@ else
 	#extract
 	ssh -i $KEY ${USERNAME}@${HOST} 'tar -zxf /tmp/ossec-hids-LS17-2.8.3.tar.gz -C /tmp/'
 	# install prerequisites and run unattended install NOTE: Requires entering password for user to sudo
-	ssh -i $KEY ${USERNAME}@${HOST} -t 'export DEBIAN_FRONTEND=noninteractive && sudo apt-get install build-essential libssl-dev --assume-yes && cd /tmp/ossec-hids-LS17-2.8.3 && sudo ./install.sh && sudo /var/ossec/bin/agent-auth -m 192.168.41.104 =p 1515'
+	ssh -i $KEY ${USERNAME}@${HOST} -t 'export DEBIAN_FRONTEND=noninteractive && sudo apt-get install build-essential inotify-tools libssl-dev --assume-yes && cd /tmp/ossec-hids-LS17-2.8.3 && sudo ./install.sh && sudo /var/ossec/bin/agent-auth -m 192.168.41.104 =p 1515'
 	# run unattended install
 	#ssh -i $KEY ${USERNAME}@${HOST} -t 'cd /tmp/ossec-hids-LS17-2.8.3 && export DEBIAN_FRONTEND=noninteractive && sudo ./install.sh'		
 	
