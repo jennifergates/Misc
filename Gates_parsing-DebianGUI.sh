@@ -28,7 +28,7 @@ for g in "${greps[@]}"
 do
 	echo " "
 	echo "FLAG: ${INDEX}"
-	echo "COMMAND: cat $1 | $g | wc -l | awk '{print '$1' }' | md5sum "
+	echo "COMMAND: cat $1 | $g | wc -l | awk '{print \$1 }' | md5sum "
 	echo -n "HASH:";	
 	echo "$contents" | eval "$g" | wc -l | awk '{print $1}' | md5sum
 	let INDEX=${INDEX}+1

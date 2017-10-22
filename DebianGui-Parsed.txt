@@ -3,57 +3,57 @@ Parse HTML Exercise
 Parsing HTML File page.html on Linux 4.9.0-3-amd64 #1 SMP Debian 4.9.30-2+deb9u2 (2017-06-26)
  
 FLAG: 1
-COMMAND: cat page.html | grep -E '^<link' | wc -l | awk '{print 'page.html' }' | md5sum 
+COMMAND: cat page.html | grep -E '^<link' | wc -l | awk '{print $1 }' | md5sum 
 HASH:c30f7472766d25af1dc80b3ffc9a58c7  -
  
 FLAG: 2
-COMMAND: cat page.html | grep -Eo 'OWASP' | wc -l | awk '{print 'page.html' }' | md5sum 
+COMMAND: cat page.html | grep -Eo 'OWASP' | wc -l | awk '{print $1 }' | md5sum 
 HASH:51aa762ea14b40fb8876c887eea6adb6  -
  
 FLAG: 3
-COMMAND: cat page.html | grep -Eo '<div' | wc -l | awk '{print 'page.html' }' | md5sum 
+COMMAND: cat page.html | grep -Eo '<div' | wc -l | awk '{print $1 }' | md5sum 
 HASH:8faff61bc1198cc6bdc19adafc27fc82  -
  
 FLAG: 4
-COMMAND: cat page.html | grep -E '^<div' | wc -l | awk '{print 'page.html' }' | md5sum 
+COMMAND: cat page.html | grep -E '^<div' | wc -l | awk '{print $1 }' | md5sum 
 HASH:367764329430db34be92fd14a7a770ee  -
  
 FLAG: 5
-COMMAND: cat page.html | grep -Eo '<\/script>' | wc -l | awk '{print 'page.html' }' | md5sum 
+COMMAND: cat page.html | grep -Eo '<\/script>' | wc -l | awk '{print $1 }' | md5sum 
 HASH:367764329430db34be92fd14a7a770ee  -
  
 FLAG: 6
-COMMAND: cat page.html | grep -Eo '<\/script>$' | wc -l | awk '{print 'page.html' }' | md5sum 
+COMMAND: cat page.html | grep -Eo '<\/script>$' | wc -l | awk '{print $1 }' | md5sum 
 HASH:7c5aba41f53293b712fd86d08ed5b36e  -
  
 FLAG: 7
-COMMAND: cat page.html | grep -Eo '<head>' | wc -l | awk '{print 'page.html' }' | md5sum 
+COMMAND: cat page.html | grep -Eo '<head>' | wc -l | awk '{print $1 }' | md5sum 
 HASH:b026324c6904b2a9cb4b88d6d61c81d1  -
  
 FLAG: 8
-COMMAND: cat page.html | grep -Eo 'https?:\/\/' | wc -l | awk '{print 'page.html' }' | md5sum 
+COMMAND: cat page.html | grep -Eo 'https?:\/\/' | wc -l | awk '{print $1 }' | md5sum 
 HASH:7162e6c85b5430f81c374d194909ad60  -
  
 FLAG: 9
-COMMAND: cat page.html | grep -Eo 'https?:\/\/[^< >"]*' | sort -u | wc -l | awk '{print 'page.html' }' | md5sum 
+COMMAND: cat page.html | grep -Eo 'https?:\/\/[^< >"]*' | sort -u | wc -l | awk '{print $1 }' | md5sum 
 HASH:091b847d9660c0555bc6f29994a03710  -
  
 FLAG: 10
-COMMAND: cat page.html | grep -Po '[a-zA-Z0-9\.\-_]+(@|\(at\))([a-zA-Z0-9]*\.)+[^: <>";),]*' | wc -l | awk '{print 'page.html' }' | md5sum 
+COMMAND: cat page.html | grep -Po '[a-zA-Z0-9\.\-_]+(@|\(at\))([a-zA-Z0-9]*\.)+[^: <>";),]*' | wc -l | awk '{print $1 }' | md5sum 
 HASH:21d192a7f99b9d042621777150ea8a5f  -
  
 FLAG: 11
-COMMAND: cat page.html | grep -Po '[a-zA-Z0-9\.\-_]+(@|\(at\))([a-zA-Z0-9]*\.)+[^: <>";),]*' | sort -u  | wc -l | awk '{print 'page.html' }' | md5sum 
+COMMAND: cat page.html | grep -Po '[a-zA-Z0-9\.\-_]+(@|\(at\))([a-zA-Z0-9]*\.)+[^: <>";),]*' | sort -u  | wc -l | awk '{print $1 }' | md5sum 
 HASH:12fc54257f1ae2301d3f9db906d7f414  -
  
 FLAG: 12
-COMMAND: cat page.html | grep -Po '\(?\d\d\d\)?(\d\d\d)[\.\-](\d\d\d\d)' | wc -l | awk '{print 'page.html' }' | md5sum 
+COMMAND: cat page.html | grep -Po '\(?\d\d\d\)?(\d\d\d)[\.\-](\d\d\d\d)' | wc -l | awk '{print $1 }' | md5sum 
 HASH:b026324c6904b2a9cb4b88d6d61c81d1  -
  
 FLAG: 13
-COMMAND: cat page.html | grep -Eo 'CWE-[[:digit:]]+' | wc -l | awk '{print 'page.html' }' | md5sum 
+COMMAND: cat page.html | grep -Eo 'CWE-[[:digit:]]+' | wc -l | awk '{print $1 }' | md5sum 
 HASH:7c67493bd72ceff21059c3d924d17518  -
  
 FLAG: 14
-COMMAND: cat page.html | grep -Eo 'CWE-[[:digit:]]+'| sort -u | wc -l | awk '{print 'page.html' }' | md5sum 
+COMMAND: cat page.html | grep -Eo 'CWE-[[:digit:]]+'| sort -u | wc -l | awk '{print $1 }' | md5sum 
 HASH:2a53da1a6fbfc0bafdd96b0a2ea29515  -
