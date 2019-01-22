@@ -1,3 +1,3 @@
 # Misc
-Just a place for miscellaneous files.
+Just a place for miscellaneous files and practicing git.
 
