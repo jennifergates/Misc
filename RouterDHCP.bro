@@ -40,14 +40,17 @@ event syslog_message(c:connection; facility:count; severity:count; msg: string)
 {
 	#split message field to get data we want
 	local messagedata = split_string(c$syslog$message, / /);
-	local fw_time = cat_sep(" ", "-", messagedata[0], messagedata[1], messagedata[2]);
+	local fw_time = cat_sep(" ", "-", messagedata[0], messagedata[1], messagedata[2], messagedata[3]);
 
 	#log any ACCEPT or DROP message from the firewall 
 	if (( "DHCPACK" in msg))
 	{
-		local ipassigned = to_addr(messagedata[5]);
-		local macaddr = messagedata[6];
-		local host = cut_tail(messagedata[7],1);
+		#local ipassigned = to_addr(messagedata[5]);
+		#local macaddr = messagedata[6];
+		#local host = cut_tail(messagedata[7],1);
+		local ipassigned = to_addr(messagedata[6]);
+		local macaddr = messagedata[7];
+		local host = cut_tail(messagedata[8],1);
 
 		local rec: RouterDHCP::Info = [$syslog_ts=c$syslog$ts, $syslog_uid=c$uid, $fw_ts=fw_time, $ip_assigned=ipassigned, $mac_addr=macaddr, $hostname=host];
 		
