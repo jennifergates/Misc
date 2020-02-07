@@ -42,12 +42,13 @@ event syslog_message(c:connection; facility:count; severity:count; msg: string)
 {
 	#split message field to get data we want
 	local messagedata = split_string(c$syslog$message, / /);
-	local fw_time = cat_sep(" ", "-", messagedata[0], messagedata[1], messagedata[2]);
+	local fw_time = cat_sep(" ", "-", messagedata[0], messagedata[1], messagedata[2], messagedata[3]);
 
 	#log any ACCEPT or DROP message from the firewall 
 	if (( "ACCEPT" in msg ) || ("DROP" in msg))
 	{
-		local action = messagedata[4];
+		#print messagedata;
+		local action = messagedata[5];
 		for (i in messagedata)
 		{
 			if ("SRC=" in messagedata[i])
